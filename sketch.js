@@ -1,5 +1,7 @@
 let song = [];
 let state = 0;
+let bgcolor = 0;
+
 
 function preload() {
   soundFormats("wav");
@@ -10,7 +12,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  colorMode(HSB);
+  colorMode(HSL);
   textAlign(CENTER, CENTER);
   fill(0);
   text("click to play", width / 2, height / 2);
@@ -18,11 +20,13 @@ function setup() {
 
 function draw() {
   if (state > 0) {
+    bgcolor+=map(mouseX,0,width,0.1,2);
+    background(bgcolor%360, map(mouseX,0,width,6,70), map(mouseX,0,width,30,60));
     if (mouseX < (width * 3) / 12) {
       song[0].setVolume(1);
       song[1].setVolume(0);
       song[2].setVolume(0);
-      background(110, 6, 42);
+
     } else if (mouseX < (width * 5) / 12) {
       song[0].setVolume(map(mouseX, (width * 3) / 12, (width * 5) / 12, 1, 0));
       song[1].setVolume(map(mouseX, (width * 3) / 12, (width * 5) / 12, 0, 1));
@@ -39,7 +43,7 @@ function draw() {
       song[0].setVolume(0);
       song[1].setVolume(0);
       song[2].setVolume(1);
-      background(110, 100, 68);
+
     }
   }
 }
