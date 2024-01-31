@@ -22,6 +22,11 @@ function Rain() {
     if (mouseX / width > 9 / 12) {
         this.A = random(0.1, 0.2)
     }
+    else if(mouseX / width > 5/12){
+        this.A = random(0.01, 0.05);
+    }else{
+        this.A = random(0.0001, 0.02);
+    }
     this.y += (this.speedY * mouseX) / width;
 
     if (this.y > height) {
