@@ -1,7 +1,9 @@
 let song = [];
 let state = 0;
 let bgcolor = 0;
-
+let rainNum = 100;
+let rain=[];
+let raining= false;
 
 function preload() {
   soundFormats("wav");
@@ -16,11 +18,14 @@ function setup() {
   textAlign(CENTER, CENTER);
   fill(0);
   text("click to play", width / 2, height / 2);
+        for(let i=0; i<rainNum; i++){
+        rain[i]=new Rain();
+      }	
 }
 
 function draw() {
   if (state > 0) {
-    bgcolor+=map(mouseX,0,width,0.1,2);
+    bgcolor+=map(mouseX,0,width,0.1,1);
     background(bgcolor%360, map(mouseX,0,width,6,70), map(mouseX,0,width,30,60));
     if (mouseX < (width * 3) / 12) {
       song[0].setVolume(1);
@@ -43,8 +48,16 @@ function draw() {
       song[0].setVolume(0);
       song[1].setVolume(0);
       song[2].setVolume(1);
-
     }
+
+    raining= true;
+    people = [];
+    for(let i=0; i<rainNum; i++){
+      rain[i].show();
+      rain[i].update();
+      }
+
+
   }
 }
 
