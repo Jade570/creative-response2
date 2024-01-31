@@ -70,3 +70,7 @@ function mousePressed() {
 
   state++;
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
