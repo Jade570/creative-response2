@@ -16,35 +16,11 @@ function setup() {
   }
   
 function draw() {
-  //song[0].setVolume(0);
-  //song[1].setVolume(0);
-  //song[2].setVolume(0);
-    // if(mouseX < windowWidth/3){
-    //   song[0].setVolume(1);
-    //   song[1].setVolume(0);
-    //   song[2].setVolume(0);
-    // }
-    // else if(mouseX < windowWidth/3*2){
-    //   song[0].setVolume(0);
-    //   song[1].setVolume(1);
-    //   song[2].setVolume(0);
-    // }
-    // else{
-    //     song[0].setVolume(0);
-    //     song[1].setVolume(0);
-    //     song[2].setVolume(1);
-    // }
-
     song[0].setVolume(max(1-(mouseX/(width/2)),0))
     song[1].setVolume(1-abs((width/2-mouseX)/(width/2)))
     song[2].setVolume((max(0,(mouseX)/width-1/2)))
     if(state > 0){
-      fill (255)
-      stroke(0)
-      line(windowWidth/3,0,windowWidth/3,height)
-      line(windowWidth/3*2,0,windowWidth/3*2,height)
-      line(windowWidth/3,0,windowWidth/3,height)
-
+      fill(255);
     }
 }
 
@@ -54,3 +30,4 @@ function mousePressed(){
     e.loop();
   })
 }
+
